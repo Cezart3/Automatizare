@@ -4,8 +4,8 @@ import { LayoutDashboard, Calendar, Ticket, Settings, Bell, Search, Inbox, Packa
 import { CalendarView } from './components/CalendarView';
 import { KanbanBoard } from './components/KanbanBoard';
 import { SettingsView } from './components/SettingsView';
-import { mockOrders, mockStats } from './data';
-import './App.css';
+import { OrdersView } from './components/OrdersView';
+import { mockStats, mockOrders } from './data';
 
 const NavItem = ({ icon, label, to }: { icon: React.ReactNode, label: string, to: string }) => {
   const location = useLocation();
@@ -65,7 +65,7 @@ const DashboardView = () => {
       <div className="glass-panel" style={{ flex: 1, padding: '24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
           <h4 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Comenzi Recente {loading && <span className="animate-pulse" style={{fontSize: '0.8rem', color: 'var(--accent-primary)'}}>(Live Sync...)</span>}</h4>
-          <button style={{ background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-primary)', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer' }}>Vezi toate</button>
+          <Link to="/orders" style={{ background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-primary)', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', textDecoration: 'none', fontSize: '0.875rem' }}>Vezi toate</Link>
         </div>
         <div style={{ width: '100%', overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
@@ -150,6 +150,7 @@ const AppContent = () => (
         <Routes>
           <Route path="/" element={<DashboardView />} />
           <Route path="/calendar" element={<CalendarView />} />
+          <Route path="/orders" element={<OrdersView />} />
           <Route path="/tickets" element={<KanbanBoard />} />
           <Route path="/settings" element={<SettingsView />} />
           <Route path="*" element={<div style={{ padding: 24 }}>In curand...</div>} />

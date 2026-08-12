@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar as CalendarIcon, Clock, Users } from 'lucide-react';
+import { Clock, Users } from 'lucide-react';
 
 export const CalendarView: React.FC = () => {
   return (

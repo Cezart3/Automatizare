@@ -18,6 +18,7 @@ import {
 import { mockOrders, mockStats } from './data';
 import { CalendarView } from './components/CalendarView';
 import { KanbanBoard } from './components/KanbanBoard';
+import { SettingsView } from './components/SettingsView';
 import './App.css'; // Just keeping the import if it exists
 
 const App: React.FC = () => {
@@ -142,6 +143,7 @@ const App: React.FC = () => {
 
         {activeTab === 'calendar' && <CalendarView />}
         {activeTab === 'tickets' && <KanbanBoard />}
+        {activeTab === 'settings' && <SettingsView />}
 
       </main>
       

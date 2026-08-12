@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 700 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        stroke: #ccc;
+        stroke-miterlimit: 10;
+        stroke-width: 8px;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #999;
+      }
+
+      .cls-5 {
+        fill: #e6f3ff;
+      }
+
+      .cls-6 {
+        fill: #1a3a5a;
+      }
+
+      .cls-7 {
+        fill: #ccc;
+      }
+
+      .cls-8 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-9 {
+        opacity: .3;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="254" y1="269" x2="301" y2="269" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#777"/>
+      <stop offset=".4" stop-color="#ccc"/>
+      <stop offset=".6" stop-color="#ccc"/>
+      <stop offset="1" stop-color="#000"/>
+      <stop offset="1" stop-color="#777"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="362.824" y1="-112.912" x2="244.574" y2="-112.912" gradientTransform="translate(474.843 254.9) rotate(-180) scale(.66 -1.409)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset=".4" stop-color="#7d7d7d"/>
+      <stop offset=".6" stop-color="#7d7d7d"/>
+      <stop offset="1" stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#000"/>
+    </linearGradient>
+  </defs>
+  <g id="_01_Cadru" data-name="01_Cadru">
+    <g>
+      <rect class="cls-2" x="4" y="4" width="692" height="492" rx="4" ry="4"/>
+      <path class="cls-7" d="m692,8v484H8V8h684m0-8H8C3.582,0,0,3.582,0,8v484c0,4.418,3.582,8,8,8h684c4.418,0,8-3.582,8-8V8c0-4.418-3.582-8-8-8h0Z"/>
+    </g>
+    <rect class="cls-2" x="288" y="282" width="5" height="31"/>
+  </g>
+  <g id="_02_StalpFeronerie" data-name="02_StalpFeronerie">
+    <rect class="cls-8" x="254" y="57" width="47" height="424"/>
+    <circle class="cls-2" cx="264" cy="282" r="10"/>
+    <circle class="cls-2" cx="291" cy="282" r="10"/>
+    <rect class="cls-2" x="261" y="282" width="5" height="31"/>
+    <rect class="cls-2" x="288" y="282" width="5" height="31"/>
+    <path class="cls-1" d="m274.494,52.006h-39.006c0,47.998,17.608,87.494,39.006,87.494,21.227,0,38.757-38.868,39.004-86.48l-39.004-1.014Z"/>
+  </g>
+  <g id="_04_SticlaInchisa" data-name="04_SticlaInchisa">
+    <g class="cls-9">
+      <rect class="cls-6" x="17" y="16" width="323" height="467"/>
+      <path class="cls-7" d="m336,20v459H21V20h315m8-8H13v475h331V12h0Z"/>
+    </g>
+    <g class="cls-9">
+      <rect class="cls-6" x="358" y="16" width="323" height="467"/>
+      <path class="cls-7" d="m677,20v459h-315V20h315m8-8h-331v475h331V12h0Z"/>
+    </g>
+  </g>
+  <g id="_05_Feronerie" data-name="05_Feronerie">
+    <g>
+      <circle class="cls-4" cx="324" cy="266" r="12"/>
+      <path class="cls-7" d="m324,258c4.411,0,8,3.589,8,8s-3.589,8-8,8-8-3.589-8-8,3.589-8,8-8m0-8c-8.837,0-16,7.163-16,16s7.163,16,16,16,16-7.163,16-16-7.163-16-16-16h0Z"/>
+    </g>
+    <g>
+      <rect class="cls-5" x="24" y="70" width="20" height="34"/>
+      <path class="cls-7" d="m40,74v26h-12v-26h12m8-8h-28v42h28v-42h0Z"/>
+    </g>
+    <g>
+      <rect class="cls-5" x="24" y="395" width="20" height="34"/>
+      <path class="cls-7" d="m40,399v26h-12v-26h12m8-8h-28v42h28v-42h0Z"/>
+    </g>
+    <path class="cls-3" d="m670,52c-64-10.333-128-20.667-192-31"/>
+    <rect class="cls-3" x="463" y="7" width="18" height="18"/>
+  </g>
+</svg>

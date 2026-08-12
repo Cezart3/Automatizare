@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <Product Id="*" Name="ShowerConfigurator" Language="1033" Version="1.0.0.0" Manufacturer="FirmaTa" UpgradeCode="d5f4f2b7-9a21-4c4c-b9e6-3c91d2a1b7f1">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+
+    <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="ShowerConfigurator">
+
+          <!-- Component pentru jar -->
+          <Component Id="JarComponent" Guid="b6e3a2f1-8a77-4e9f-b2c1-1e9b3d7f5c6d">
+            <File Id="JarFile" Source="C:\Users\super\IdeaProjects\ShowerConfiguratoir\out\artifacts\ShowerConfiguratoir_jar\ShowerConfiguratoir.jar" KeyPath="yes"/>
+          </Component>
+
+          <!-- Component pentru .env -->
+          <Component Id="EnvComponent" Guid="c7f2b1a9-2d34-4c88-9f3e-5d6a7e8f9b10">
+            <File Id="EnvFile" Source="C:\Users\super\IdeaProjects\ShowerConfiguratoir\.env" KeyPath="yes"/>
+          </Component>
+
+          <!-- Component pentru .bat si shortcut desktop -->
+          <Component Id="BatComponent" Guid="f1a2b3c4-5d6e-4f7a-8b9c-0d1e2f3a4b5d">
+            <File Id="BatFile" Source="C:\Users\super\IdeaProjects\ShowerConfiguratoir\runShowerConfigurator.bat" />
+            <Shortcut Id="DesktopShortcut"
+                      Directory="DesktopFolder"
+                      Name="ShowerConfigurator"
+                      Description="Lanseaza aplicatia ShowerConfigurator"
+                      Target="[INSTALLFOLDER]runShowerConfigurator.bat"
+                      WorkingDirectory="INSTALLFOLDER"/>
+            <!-- Registry ca KeyPath -->
+            <RegistryValue Root="HKCU" Key="Software\ShowerConfigurator" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+          </Component>
+
+        </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop"/>
+    </Directory>
+
+    <Feature Id="MainFeature" Title="ShowerConfigurator" Level="1">
+      <ComponentRef Id="JarComponent"/>
+      <ComponentRef Id="EnvComponent"/>
+      <ComponentRef Id="BatComponent"/>
+    </Feature>
+
+  </Product>
+</Wix>

@@ -5,7 +5,6 @@ import { CalendarView } from './components/CalendarView';
 import { KanbanBoard } from './components/KanbanBoard';
 import { SettingsView } from './components/SettingsView';
 import { OrdersView } from './components/OrdersView';
-import { mockStats, mockOrders } from './data';
 
 const NavItem = ({ icon, label, to }: { icon: React.ReactNode, label: string, to: string }) => {
   const location = useLocation();
@@ -30,16 +29,21 @@ const NavItem = ({ icon, label, to }: { icon: React.ReactNode, label: string, to
 import axios from 'axios';
 
 const DashboardView = () => {
-  const [orders, setOrders] = React.useState<any[]>(mockOrders);
+  const [orders, setOrders] = React.useState<any[]>([]);
+  const [stats, setStats] = React.useState<any>({ totalOrders: 0, successRate: 0, revenueGenerated: '€0' });
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    axios.get('http://localhost:3000/api/orders')
-      .then(res => {
-        if (res.data && res.data.length > 0) setOrders(res.data);
-      })
-      .catch(err => console.error("Failed to fetch live orders", err))
-      .finally(() => setLoading(false));
+    Promise.all([
+      axios.get('http://localhost:3000/api/orders'),
+      axios.get('http://localhost:3000/api/stats')
+    ])
+    .then(([ordersRes, statsRes]) => {
+      setOrders(ordersRes.data.slice(0, 5)); // show latest 5
+      setStats(statsRes.data);
+    })
+    .catch(err => console.error("Failed to fetch dashboard data", err))
+    .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -51,15 +55,15 @@ const DashboardView = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', marginBottom: '32px' }}>
         <div className="glass-panel stat-card" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Total Comenzi</div>
-          <div style={{ fontSize: '2rem', fontWeight: 700 }}>{mockStats.totalOrders}</div>
+          <div style={{ fontSize: '2rem', fontWeight: 700 }}>{stats.totalOrders}</div>
         </div>
         <div className="glass-panel stat-card" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Rată Succes</div>
-          <div style={{ fontSize: '2rem', fontWeight: 700 }}>{mockStats.successRate}%</div>
+          <div style={{ fontSize: '2rem', fontWeight: 700 }}>{stats.successRate}%</div>
         </div>
         <div className="glass-panel stat-card" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Venituri Generate</div>
-          <div style={{ fontSize: '2rem', fontWeight: 700 }}>{mockStats.revenueGenerated}</div>
+          <div style={{ fontSize: '2rem', fontWeight: 700 }}>{stats.revenueGenerated}</div>
         </div>
       </div>
       <div className="glass-panel" style={{ flex: 1, padding: '24px' }}>

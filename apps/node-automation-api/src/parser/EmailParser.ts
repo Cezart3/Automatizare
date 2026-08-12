@@ -25,18 +25,23 @@ export class EmailParser {
 
         for (const line of lines) {
             const lowerLine = line.toLowerCase().trim();
+            const parts = line.split(':');
+            if (parts.length < 2) continue;
+            
+            const value = parts.slice(1).join(':').trim();
+
             if (lowerLine.startsWith('tip cabina:')) {
-                order.tipCabina = line.split(':')[1].trim();
+                order.tipCabina = value;
                 // Infer productType from tipCabina
                 if (order.tipCabina.startsWith('tipu')) {
                     order.productType = "batanta";
                 }
             } else if (lowerLine.startsWith('dimensiuni:')) {
-                order.dimensiuni = line.split(':')[1].trim();
+                order.dimensiuni = value;
             } else if (lowerLine.startsWith('sticla:')) {
-                order.sticlaNume = line.split(':')[1].trim();
+                order.sticlaNume = value;
             } else if (lowerLine.startsWith('finisaj:')) {
-                const finisaj = line.split(':')[1].trim().toLowerCase();
+                const finisaj = value.toLowerCase();
                 if (finisaj.includes('lucios')) order.finisajID = 1;
                 else if (finisaj.includes('mat')) order.finisajID = 2;
                 else if (finisaj.includes('negru')) order.finisajID = 3;

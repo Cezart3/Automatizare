@@ -98,7 +98,7 @@ const App: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {mockOrders.map((order, idx) => (
+                {mockOrders.map((order) => (
                   <tr key={order.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', transition: 'background 0.2s', cursor: 'pointer' }} className="table-row-hover">
                     <td style={{ padding: '16px 24px', fontWeight: 500 }}>{order.id}</td>
                     <td style={{ padding: '16px 24px' }}>
@@ -170,7 +170,7 @@ const NavItem = ({ icon, label, active, onClick }: { icon: React.ReactNode, labe
         if (!active) e.currentTarget.style.background = 'transparent';
       }}
     >
-      {React.cloneElement(icon as React.ReactElement, { size: 20, color: active ? 'var(--accent-primary)' : 'var(--text-muted)' })}
+      {React.cloneElement(icon as React.ReactElement<any>, { size: 20, color: active ? 'var(--accent-primary)' : 'var(--text-muted)' })}
       {label}
     </button>
   );

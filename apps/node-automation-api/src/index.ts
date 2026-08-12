@@ -1,9 +1,18 @@
 import * as dotenv from 'dotenv';
 import { ImapListener } from './imap/ImapListener';
+import { startServer } from './server';
 
 dotenv.config();
 
-console.log("Starting Node Automation API...");
+async function bootstrap() {
+  console.log('Starting OmniBusiness Automation Ecosystem...');
 
-const listener = new ImapListener();
-listener.start();
+  // Start REST API
+  startServer(3000);
+
+  // Initialize and start IMAP Listener for email automation
+  const listener = new ImapListener();
+  listener.start();
+}
+
+bootstrap().catch(console.error);
